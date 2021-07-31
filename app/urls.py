@@ -1,7 +1,9 @@
-from django.urls import path
-from .views import Index
+from django.urls import path, include
+from .views import SalonViewSet
+from rest_framework.routers import DefaultRouter
 
-
+router = DefaultRouter()
+router.register('salons', SalonViewSet, basename='salons')
 urlpatterns = [
-    path('', Index),
+    path('', include(router.urls)),
 ]

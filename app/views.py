@@ -1,7 +1,9 @@
-from django.shortcuts import render, HttpResponse
+from rest_framework import viewsets
 
-# Create your views here.
+from .serializers import SalonSerializer
+from .models import Salon
 
-def Index(request):
 
-    return HttpResponse("It's working")
+class SalonViewSet(viewsets.ModelViewSet):
+    queryset = Salon.objects.all()
+    serializer_class = SalonSerializer
